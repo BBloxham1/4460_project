@@ -11,11 +11,13 @@
     <a href="scheduleUpdate.php">Update Schedule</a> |
     
     <h3>Add a course</h1>
-    <form method='post' action='addCourse.php'>
+    <form method='post' action='course_add_action.php'>
 			<pre>
-				CourseID: <input type='text' name='courseid'>
+                CourseID: <input type='text' name='courseid'>
 				Title: <input type='text' name='title'>
-				Semester: <input type='text' name='Semester'>
+				Quota: <input type='text' name='quota'>
+				Credit Hours: <input type='text' name='creditHrs'>
+				Semester: <input type='text' name='semester'>
 				Year: <input type='text' name='year'>
 				<input type='submit' value='Add Course'>
 			</pre>

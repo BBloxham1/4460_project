@@ -12,7 +12,15 @@ $email = $_POST['email'];
 $address = $_POST['address'];
 $category = $_POST['category'];
 
-$sql = "INSERT INTO User (FirstName, LastName, PhoneNumber, Email, Address) VALUES ('$first_name', '$last_name', '$phone', '$email', '$address')";
+if ($category == 'student'){
+    $sql = "INSERT INTO Student (FirstName, LastName, PhoneNumber, Email, Address, GPA) VALUES ('$first_name', '$last_name', '$phone', '$email', '$address', 0.0)";
+
+}
+
+elseif ($category == 'admin'){
+    $sql = "INSERT INTO Admin (FirstName, LastName, PhoneNumber, Email, Address) VALUES ('$first_name', '$last_name', '$phone', '$email', '$address')";
+
+}
 
 if ($conn->query($sql) === TRUE) {
     echo "New user created successfully";

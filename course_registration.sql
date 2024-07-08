@@ -43,12 +43,12 @@ CREATE TABLE `Admin` (
 --
 
 CREATE TABLE `Course` (
-  `CourseID` int(11) NOT NULL,
-  `CourseTitle` varchar(20) NOT NULL,
+  `CourseID` varchar(10) NOT NULL,
+  `CourseTitle` varchar(50) NOT NULL,
   `CreditHrs` tinyint(4) NOT NULL,
   `Quota` varchar(20) NOT NULL,
   `Semester` varchar(10) NOT NULL,
-  `Year` tinyint(4) NOT NULL
+  `Year` smallint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
