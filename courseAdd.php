@@ -9,18 +9,60 @@
 <body>
     <a href="viewSchedule.php">My Schedule</a> |
     <a href="scheduleUpdate.php">Update Schedule</a> |
+	<a href="../authentication/authenticate.php">Logout</a> |
     
     <h3>Add a course</h1>
-    <form method='post' action='course_add_action.php'>
+    <form method='post' action='courseAdd.php'>
 			<pre>
                 CourseID: <input type='text' name='courseid'>
-				Title: <input type='text' name='title'>
-				Quota: <input type='text' name='quota'>
-				Credit Hours: <input type='text' name='creditHrs'>
-				Semester: <input type='text' name='semester'>
-				Year: <input type='text' name='year'>
 				<input type='submit' value='Add Course'>
 			</pre>
 		</form>
 </body>
 </html>
+
+<?php
+
+$page_roles = array('student', 'advisor');
+
+
+
+require_once '../authentication/login.php';
+require_once '../authentication/checksession.php';
+
+
+$conn = new mysqli($hn, $un, $pw, $db);
+if($conn->connect_error) die($conn->connect_error);
+
+//check if title exists
+if(isset($_POST['courseid'])) 
+{
+	//Get data from POST object
+	$courseid = sanitize($conn, $_POST['courseid']);
+
+	$query = "INSERT INTO Enrollment (UserID, Grade, CourseID) 
+	VALUES ('$username', NULL,'$courseid')";
+	
+	$result = $conn->query($query); 
+	if(!$result) die($conn->error);
+	
+	header("Location: studentschedule.php?userid='$username'");
+	
+}
+
+
+
+$conn->close();
+
+
+function sanitize($conn, $string) {
+    $string = stripslashes($string);               // Remove backslashes from the string
+    $string = $conn->real_escape_string($string);  // Sanitize the string for the database
+    $string = htmlentities($string);               // Convert special characters to HTML entities
+	return $string;
+}
+
+
+
+
+?>

@@ -46,7 +46,7 @@ if(isset($_POST['courseid']))
 	$result = $conn->query($query); 
 	if(!$result) die($conn->error);
 	
-	header("Location: viewSchedule.php");
+	header("Location: studentschedule.php?userid='$username'");
 	
 }
 

@@ -52,7 +52,7 @@ if (isset($_POST['userid']) && isset($_POST['password'])) {
 		$user_role = $user->getRoles();
 
 		if ($user_role[0] == 'student') {
-			header("Location: ../studentCRUD/viewSchedule.php?userid='$tmp_userid'");
+			header("Location: ../studentCRUD/studentschedule.php?userid='$tmp_userid'");
 		}
 
 		elseif ($user_role[0] == advisor) {

@@ -11,7 +11,7 @@
     <a href="courseAdd.php">Add Course</a> |
     <a href="scheduleUpdate.php">Update Schedule</a> |
     <a href="info_update.php">Update Information</a> |
-    <a href="authenticate.php">Logout</a> |
+    <a href="../authentication/authenticate.php">Logout</a> |
 
     <h1>Welcome</h1>
 
